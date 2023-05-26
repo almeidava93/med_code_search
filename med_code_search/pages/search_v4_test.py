@@ -79,7 +79,7 @@ df['text'] = df['Termo Português'].copy().apply(lambda x: unidecode(x))
 @st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, persist=True)
 def bm25_index_(data = df['text']):
     #Launch the language object
-    nlp = spacy.load("pt_core_news_lg")
+    nlp = spacy.blank("pt")
     #Preparing for tokenisation
     text_list = data.str.lower().values
     tok_text=[] # for our tokenised corpus
