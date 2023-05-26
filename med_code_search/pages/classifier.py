@@ -29,7 +29,7 @@ def load_data():
     pickle_in = open("ciap_dict.pickle","rb")
     ciap_dict = pickle.load(pickle_in)
     
-    nlp = spacy.load('pt_core_news_lg')
+    nlp = spacy.blank('pt')
 
     return nlp, ciap_dict, matcher1
 
