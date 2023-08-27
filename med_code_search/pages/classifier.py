@@ -12,6 +12,8 @@ from spacy.tokens import Span
 import pandas as pd
 import pickle
 import time
+import pkg_resources
+from pathlib import Path
 
 #Custom packages
 from med_code_search.database import *
@@ -23,7 +25,8 @@ firestore_client = load_firestore_client()
 
 @st.cache_resource
 def load_matcher():
-    pickle_in = open("tk_matcher.pkl","rb")
+    file_stream = pkg_resources.resource_stream(__name__, Path('data','tk_matcher.pkl'))
+    pickle_in = open(file_stream,"rb")
     matcher = pickle.load(pickle_in)
     return matcher
 
