@@ -19,7 +19,7 @@ service_account_info = st.secrets["gcp_service_account_firestore"]
 firebase_storage_config = st.secrets["gcp_service_account"]
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
+@st.cache_resource(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
 def load_firestore_client(service_account_info = service_account_info):
   firestore_client = firestore.Client.from_service_account_info(service_account_info)
   return firestore_client
@@ -28,7 +28,7 @@ firestore_client = load_firestore_client() #Carrega a conexão com a base de dad
 
 
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, allow_output_mutation=True)
+@st.cache_data(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
 def firestore_query(firestore_client = firestore_client, field_paths = [], collection = 'tesauro'):
   #Load dataframe for code search
   firestore_collection = firestore_client.collection(collection)
@@ -38,14 +38,14 @@ def firestore_query(firestore_client = firestore_client, field_paths = [], colle
   filtered_collection_dataframe = pd.DataFrame.from_records(filtered_collection_dict) #Returns dataframe
   return filtered_collection_dataframe
 
-@st.cache(ttl=None, show_spinner=True)
+@st.cache_data(ttl=None, show_spinner=True)
 def join_columns(dataframe, column_names, delimiter=' | ', drop_duplicates=False):
   df = dataframe[column_names].agg(delimiter.join, axis=1)
   if drop_duplicates==True: df.drop_duplicates()
   return df
 
 #Função que remove caracteres especiais de uma coluna de um dataframe
-@st.cache(ttl=None, show_spinner=True)
+@st.cache_data(ttl=None, show_spinner=True)
 def unidecode_df(dataframe, column_name):
   return dataframe[column_name].apply(lambda x: unidecode(x))
 
@@ -76,7 +76,7 @@ def save_search(text_input, n_records, n_results, selected_code, collection_name
 df = firestore_query(field_paths=['`CIAP2_Código1`', '`titulo original`','`Termo Português`'])
 df['text'] = df['Termo Português'].copy().apply(lambda x: unidecode(x))
 
-@st.cache(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True, persist=True)
+@st.cache_resource(hash_funcs={firestore.Client: id}, ttl=None, show_spinner=True)
 def bm25_index_(data = df['text']):
     #Launch the language object
     nlp = spacy.blank("pt")

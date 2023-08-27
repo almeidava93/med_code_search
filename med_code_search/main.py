@@ -2,7 +2,7 @@ import streamlit as st
 
 # Custom imports 
 from med_code_search.multipage import MultiPage
-from med_code_search.pages import code_search, feedback, update_search, search_v4_test, classifier, openai_search # import your pages here
+from med_code_search.pages import code_search, feedback, update_search, search_v4_test, classifier, openai_search, multi_coding # import your pages here
 
 def app():
     # Create an instance of the app 
@@ -12,9 +12,10 @@ def app():
     st.title("Codificação de condições clínicas")
 
     # Add all your applications (pages) here
-    app.add_page("CIAP2 e CID10 - Busca semântica", openai_search.app)
-    app.add_page("CIAP2 v2 - BM25", search_v4_test.app)
-    app.add_page("CIAP2 e CID10 v1 - BM25", code_search.app)
+    app.add_page("CIAP2 e CID10 - v4", multi_coding.app)
+    app.add_page("CIAP2 e CID10 - v3", openai_search.app)
+    app.add_page("CIAP2 - v2", search_v4_test.app)
+    app.add_page("CIAP2 e CID10 - v1", code_search.app)
     app.add_page("Codificador de motivos de consulta", classifier.app)
     app.add_page("Não encontrou?", feedback.app)
     app.add_page("Atualize o tesauro", update_search.app)
