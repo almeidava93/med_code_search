@@ -25,7 +25,7 @@ firestore_client = load_firestore_client()
 
 @st.cache_resource
 def load_matcher():
-    file_stream = pkg_resources.resource_stream(__name__, 'data/tk_matcher.pkl')
+    file_stream = pkg_resources.resource_stream(__name__, 'tk_matcher.pkl')
     pickle_in = open(file_stream,"rb")
     matcher = pickle.load(pickle_in)
     return matcher
