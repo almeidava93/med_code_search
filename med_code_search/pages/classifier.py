@@ -1,19 +1,14 @@
 #source: https://newscatcherapi.com/blog/how-to-annotate-entities-with-spacy-phrase-macher
 
-from multiprocessing.spawn import prepare
 import streamlit as st
 from unidecode import unidecode
 
 import spacy
-from spacy.matcher import PhraseMatcher
-from spacy.matcher import Matcher
-from spacy.tokens import Span
 
 import pandas as pd
 import pickle
 import time
 import pkg_resources
-from pathlib import Path
 
 #Custom packages
 from med_code_search.database import *
