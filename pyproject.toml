@@ -1,7 +1,5 @@
 [build-system]
 requires = [
-    "setuptools>=54",
-    "wheel",
     "aiohttp==3.8.4",
     "aiosignal==1.3.1",
     "altair==4.2.2",
@@ -18,6 +16,7 @@ requires = [
     "click==8.1.3",
     "colorama==0.4.6",
     "comm==0.1.3",
+    "confection==0.1.1",
     "contourpy==1.0.7",
     "cycler==0.11.0",
     "cymem==2.0.7",
@@ -89,6 +88,7 @@ requires = [
     "pyrsistent==0.19.3",
     "python-dateutil==2.8.2",
     "pytz==2023.3",
+    "pytz-deprecation-shim==0.1.0.post0",
     "PyYAML==6.0",
     "pyzmq==25.1.0",
     "rank-bm25==0.2.2",
@@ -100,14 +100,14 @@ requires = [
     "six==1.16.0",
     "smart-open==6.3.0",
     "smmap==5.0.0",
-    "spacy==3.2.6",
+    "spacy==3.6.1",
     "spacy-legacy==3.0.12",
     "spacy-loggers==1.0.4",
     "srsly==2.4.6",
     "stack-data==0.6.2",
-    "streamlit==1.22.0",
+    "streamlit==1.26.0",
     "tenacity==8.2.2",
-    "thinc==8.0.17",
+    "thinc==8.1.12",
     "threadpoolctl==3.1.0",
     "toml==0.10.2",
     "toolz==0.12.0",
@@ -117,7 +117,7 @@ requires = [
     "typer==0.4.2",
     "typing_extensions==4.5.0",
     "tzdata==2023.3",
-    "tzlocal==5.0.1",
+    "tzlocal==4.3.1",
     "Unidecode==1.3.6",
     "urllib3==1.26.16",
     "uuid==1.30",
@@ -129,6 +129,6 @@ requires = [
     "win32-setctime==1.1.0",
     "yarl==1.9.2",
     "zipp==3.15.0",
-    "zope.interface==6.0",
+    "zope.interface==6.0"
 ]
 build-backend = "setuptools.build_meta"
