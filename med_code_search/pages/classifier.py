@@ -8,9 +8,10 @@ import spacy
 import pandas as pd
 import pickle
 import time
-import importlib.resources
+from importlib.resources import files, as_file
 
 #Custom packages
+import med_code_search
 from med_code_search.database import *
 
 # Next steps:
@@ -20,10 +21,10 @@ firestore_client = load_firestore_client()
 
 @st.cache_resource
 def load_matcher():
-    pkg = importlib.resources.files("med_code_search")
-    with importlib.resources.as_file(pkg):
-        pickle_in = open("tk_matcher.pkl", "rb")
-    matcher = pickle.load(pickle_in)
+    source = files(med_code_search).joinpath('tk_matcher.pkl')
+    with as_file(source) as file:
+        pickle_in = open(file, "rb")
+        matcher = pickle.load(pickle_in)
     return matcher
 
 
