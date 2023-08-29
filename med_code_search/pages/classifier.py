@@ -88,8 +88,8 @@ def test_matcher(text, matcher):
 def app():
     matcher = load_matcher()
     with st.container():
-        st.header('Classificador de motivos de consulta')
-        st.write('Digite abaixo o texto referente ao motivo de consulta de um atendimento. Nós te ajudaremos a encontrar a melhor codificação para o seu atendimento.')
+        st.header('Codificador de motivos de consulta')
+        st.write('Digite abaixo o texto referente ao motivo de consulta de um atendimento. Nós te ajudaremos com sugestões de códigos CIAP.')
         st.text_area('Motivo de consulta:', key="text", on_change=save_on_change, args=["text", "classifier"])
         if st.session_state['text'] != "":
             t0 = time.time()
