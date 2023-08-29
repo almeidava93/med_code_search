@@ -154,3 +154,6 @@ cython_debug/
 .streamlit
 test.py
 *.ipynb
+share/
+Scripts/
+etc/
