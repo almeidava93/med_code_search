@@ -1,2 +1,4 @@
-include med_code_search\tk_matcher.pkl
+include med_code_search/tk_matcher.pkl
+include med_code_search/*.pkl
 include tk_matcher.pkl
+include *.pkl
