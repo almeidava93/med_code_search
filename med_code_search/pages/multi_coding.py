@@ -122,7 +122,7 @@ def app():
         n_results = 1 if len(inputs) > 1 else 5
         logger.info(f"Number of results per input: {n_results}")
         for input in inputs:
-            results_df = query_vector_database(input, n_results)
+            results_df = query_vector_database(input.strip(), n_results)
             codes_data = get_code_data_from_firebase(results_df['code'].to_list())
             current_input_results = extract_results(results_df, codes_data)
             logger.info(f"Current input: {input}\n Current input results: {current_input_results}")
