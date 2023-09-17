@@ -153,4 +153,4 @@ cython_debug/
 
 .streamlit
 test.py
-*.ipynb
+test.ipynb
